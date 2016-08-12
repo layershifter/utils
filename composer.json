@@ -1,0 +1,37 @@
+{
+  "name": "layershifter/utils",
+  "description": "A collection of useful PHP functions, mini classes and snippets that you need or could use every day",
+  "minimum-stability": "stable",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Alexander Fedyashov",
+      "email": "a@fedyashov.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LayerShifter\\Utils\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "LayerShifter\\Utils\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=5.5",
+    "symfony/polyfill-mbstring": "^1.2"
+  },
+  "require-dev": {
+    "codeclimate/php-test-reporter": "dev-master",
+    "phpmd/phpmd": "@stable",
+    "phpunit/phpcov": "2.*",
+    "phpunit/phpunit": "4.8.*",
+    "satooshi/php-coveralls": "dev-master"
+  },
+  "scripts": {
+    "lint": "phpcs --report=summary --standard=PSR2 ./src ./tests",
+    "test": "phpunit --colors=always"
+  }
+}
