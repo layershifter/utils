@@ -28,7 +28,8 @@
     "phpmd/phpmd": "@stable",
     "phpunit/phpcov": "2.*",
     "phpunit/phpunit": "4.8.*",
-    "satooshi/php-coveralls": "*"
+    "satooshi/php-coveralls": "*",
+    "squizlabs/php_codesniffer": "2.*"
   },
   "scripts": {
     "lint": "phpcs --report=summary --standard=PSR2 ./src ./tests",
