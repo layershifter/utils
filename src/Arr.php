@@ -43,6 +43,33 @@ class Arr
     }
 
     /**
+     * Returns the first key in an array passing a given truth test.
+     *
+     * @param array         $array    Haystack array
+     * @param null|callable $callback Optional callback function
+     * @param mixed         $default  Default value if array key not found
+     *
+     * @return int|string
+     */
+    public static function firstKey(array $array, callable $callback = null, $default = null)
+    {
+        if (null === $callback) {
+            reset($array);
+            $key = key($key);
+
+            return null === $key ? Others::value($default) : $key;
+        }
+
+        foreach ($array as $key => $value) {
+            if (call_user_func($callback, $value, $key)) {
+                return $key;
+            }
+        }
+
+        return Others::value($default);
+    }
+
+    /**
      * Returns the last element in an array passing a given truth test.
      *
      * @param array         $array    Haystack array
@@ -55,6 +82,27 @@ class Arr
     {
         if (null === $callback) {
             return count($array) === 0 ? Others::value($default) : end($array);
+        }
+
+        return Arr::first(array_reverse($array, true), $callback, $default);
+    }
+
+    /**
+     * Returns the last key in an array passing a given truth test.
+     *
+     * @param array         $array    Haystack array
+     * @param null|callable $callback Optional callback function
+     * @param mixed         $default  Default value if array key not found
+     *
+     * @return int|string
+     */
+    public static function lastKey(array $array, callable $callback = null, $default = null)
+    {
+        if (null === $callback) {
+            end($array);
+            $key = key($key);
+
+            return null === $key ? Others::value($default) : $key;
         }
 
         return Arr::first(array_reverse($array, true), $callback, $default);
