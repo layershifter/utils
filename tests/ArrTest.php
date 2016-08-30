@@ -61,4 +61,19 @@ class ArrTest extends \PHPUnit_Framework_TestCase
         self::assertInternalType('int', Arr::last([1, 2, 3]));
         self::assertInternalType('string', Arr::last(['a', 'b', 'c']));
     }
+
+    /**
+     * Test for where() method.
+     *
+     * @return void
+     */
+    public function testWhere()
+    {
+        $array = [100, '200', 300, '400', 500];
+        $array = Arr::where($array, function ($value, $key) {
+            return is_string($value);
+        });
+
+        self::assertEquals([1 => 200, 3 => 400], $array);
+    }
 }

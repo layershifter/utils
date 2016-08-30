@@ -2,10 +2,10 @@
 /**********************************************************************************************************************
  *  Utils: A collection of useful PHP functions, mini classes and snippets that you need or could use every day.      *
  *                                                                                                                    *
- *  @link      https://github.com/layershifter/utils                                                                  *
+ * @link      https://github.com/layershifter/utils                                                                  *
  *                                                                                                                    *
- *  @copyright Copyright (c) 2016, Alexander Fedyashov                                                                *
- *  @license   https://raw.githubusercontent.com/layershifter/utils/master/LICENSE Apache 2.0 License                 *
+ * @copyright Copyright (c) 2016, Alexander Fedyashov                                                                *
+ * @license   https://raw.githubusercontent.com/layershifter/utils/master/LICENSE Apache 2.0 License                 *
  **********************************************************************************************************************/
 
 namespace LayerShifter\Utils;
@@ -106,5 +106,18 @@ class Arr
         }
 
         return Arr::first(array_reverse($array, true), $callback, $default);
+    }
+
+    /**
+     * Filters the array using the given callback.
+     *
+     * @param  array    $array    Haystack array
+     * @param  callable $callback Callback function
+     *
+     * @return array
+     */
+    public static function where(array $array, callable $callback)
+    {
+        return array_filter($array, $callback, ARRAY_FILTER_USE_BOTH);
     }
 }
