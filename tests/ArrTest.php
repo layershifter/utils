@@ -63,6 +63,29 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test for sort() method.
+     *
+     * @return void
+     */
+    public function testSort()
+    {
+        $unsorted = [
+            ['name' => 'Desk'],
+            ['name' => 'Chair'],
+        ];
+        $expected = [
+            ['name' => 'Chair'],
+            ['name' => 'Desk'],
+        ];
+        $sorted = array_values(Arr::sort($unsorted, function ($value) {
+            return $value['name'];
+        }));
+
+        self::assertEquals($expected, $sorted);
+    }
+
+
+    /**
      * Test for where() method.
      *
      * @return void

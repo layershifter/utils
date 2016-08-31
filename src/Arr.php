@@ -109,6 +109,39 @@ class Arr
     }
 
     /**
+     * Sorts the array using the given callback.
+     *
+     * @param array    $array    Haystack array
+     * @param callable $callback Optional callback function
+     *
+     * @return array
+     */
+    public static function sort(array $array, $callback)
+    {
+        $results = [];
+
+        // First we will loop through the items and get the comparator from a callback
+        // function which we were given. Then, we will sort the returned values and
+        // and grab the corresponding values for the sorted keys from this array.
+
+        foreach ($array as $key => $value) {
+            $results[$key] = $callback($value, $key);
+        }
+
+        asort($results);
+
+        // Once we have sorted all of the keys in the array, we will loop through them
+        // and grab the corresponding model so we can set the underlying items list
+        // to the sorted version. Then we'll just return the collection instance.
+
+        foreach (array_keys($results) as $key) {
+            $results[$key] = $array[$key];
+        }
+
+        return $results;
+    }
+
+    /**
      * Filters the array using the given callback.
      *
      * @param  array    $array    Haystack array
