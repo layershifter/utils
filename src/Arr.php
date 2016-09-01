@@ -30,7 +30,16 @@ class Arr
     public static function first(array $array, callable $callback = null, $default = null)
     {
         if (null === $callback) {
-            return count($array) === 0 ? Others::value($default) : reset($array);
+            if (count($array) === 0) {
+                return Others::value($default);
+            }
+
+            // Using foreach() instead of reset() for performance.
+            // https://bugs.php.net/bug.php?id=72745
+
+            foreach ($array as $value) {
+                return $value;
+            }
         }
 
         foreach ($array as $key => $value) {
@@ -54,10 +63,16 @@ class Arr
     public static function firstKey(array $array, callable $callback = null, $default = null)
     {
         if (null === $callback) {
-            reset($array);
-            $key = key($key);
+            if (count($array) === 0) {
+                return Others::value($default);
+            }
 
-            return null === $key ? Others::value($default) : $key;
+            // Using foreach() instead of reset() for performance.
+            // https://bugs.php.net/bug.php?id=72745
+
+            foreach ($array as $key => $value) {
+                return $key;
+            }
         }
 
         foreach ($array as $key => $value) {
