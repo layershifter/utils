@@ -166,6 +166,21 @@ class Arr
      */
     public static function where(array $array, callable $callback)
     {
+        // Fallback for PHP 5.5 and HHVM, because they don't support ARRAY_FILTER_USE_BOTH.
+        // @see http://php.net/manual/en/function.array-filter.php
+
+        if (defined('HHVM_VERSION') || !defined('ARRAY_FILTER_USE_BOTH')) {
+            $filtered = [];
+
+            foreach ($array as $key => $value) {
+                if (call_user_func($callback, $key, $value)) {
+                    $filtered[$key] = $value;
+                }
+            }
+
+            return $filtered;
+        }
+
         return array_filter($array, $callback, ARRAY_FILTER_USE_BOTH);
     }
 }
