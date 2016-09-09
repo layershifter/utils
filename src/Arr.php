@@ -115,12 +115,12 @@ class Arr
     {
         if (null === $callback) {
             end($array);
-            $key = key($key);
+            $key = key($array);
 
             return null === $key ? Others::value($default) : $key;
         }
 
-        return Arr::first(array_reverse($array, true), $callback, $default);
+        return Arr::firstKey(array_reverse($array, true), $callback, $default);
     }
 
     /**

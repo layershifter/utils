@@ -2,10 +2,10 @@
 /**********************************************************************************************************************
  *  Utils: A collection of useful PHP functions, mini classes and snippets that you need or could use every day.      *
  *                                                                                                                    *
- *  @link      https://github.com/layershifter/utils                                                                  *
+ * @link      https://github.com/layershifter/utils                                                                  *
  *                                                                                                                    *
- *  @copyright Copyright (c) 2016, Alexander Fedyashov                                                                *
- *  @license   https://raw.githubusercontent.com/layershifter/utils/master/LICENSE Apache 2.0 License                 *
+ * @copyright Copyright (c) 2016, Alexander Fedyashov                                                                *
+ * @license   https://raw.githubusercontent.com/layershifter/utils/master/LICENSE Apache 2.0 License                 *
  **********************************************************************************************************************/
 
 namespace LayerShifter\Utils\Tests;
@@ -41,6 +41,46 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test for firstKey() method.
+     *
+     * @return void
+     */
+    public function testFirstKey()
+    {
+        // Test on basic array.
+
+        self::assertEquals(0, Arr::firstKey([1, 2, 3]));
+        self::assertEquals(0, Arr::firstKey(['a', 'b', 'c']));
+        self::assertNotEquals(1, Arr::firstKey(['a', 'b', 'c']));
+
+        self::assertEquals(1, Arr::firstKey([1, 2, 3], function ($value) {
+            return $value === 2;
+        }));
+        self::assertEquals(null, Arr::firstKey([1, 2, 3], function ($value) {
+            return $value === 20;
+        }));
+
+        self::assertInternalType('int', Arr::firstKey([1, 2, 3]));
+        self::assertInternalType('int', Arr::firstKey(['a', 'b', 'c']));
+
+        // Test on assoc array.
+
+        self::assertEquals(1, Arr::firstKey([1 => null, 2 => null, 3 => null]));
+        self::assertEquals('a', Arr::firstKey(['a' => null, 'b' => null, 'c' => null]));
+        self::assertNotEquals('b', Arr::firstKey(['a' => null, 'b' => null, 'c' => null]));
+
+        self::assertEquals(2, Arr::firstKey([1 => null, 2 => null, 3 => null], function ($value, $key) {
+            return $value === null && $key === 2;
+        }));
+        self::assertEquals(null, Arr::firstKey([1 => null, 2 => null, 3 => null], function ($value) {
+            return $value !== null;
+        }));
+
+        self::assertInternalType('int', Arr::firstKey([1 => null, 2 => null, 3 => null]));
+        self::assertInternalType('string', Arr::firstKey(['a' => null, 'b' => null, 'c' => null]));
+    }
+
+    /**
      * Test for last() method.
      *
      * @return void
@@ -60,6 +100,46 @@ class ArrTest extends \PHPUnit_Framework_TestCase
 
         self::assertInternalType('int', Arr::last([1, 2, 3]));
         self::assertInternalType('string', Arr::last(['a', 'b', 'c']));
+    }
+
+    /**
+     * Test for lastKey() method.
+     *
+     * @return void
+     */
+    public function testLastKey()
+    {
+        // Test on basic array.
+
+        self::assertEquals(2, Arr::lastKey([1, 2, 3]));
+        self::assertEquals(2, Arr::lastKey(['a', 'b', 'c']));
+        self::assertNotEquals(1, Arr::lastKey(['a', 'b', 'c']));
+
+        self::assertEquals(1, Arr::lastKey([1, 2, 3], function ($value) {
+            return $value === 2;
+        }));
+        self::assertEquals(null, Arr::lastKey([1, 2, 3], function ($value) {
+            return $value === 20;
+        }));
+
+        self::assertInternalType('int', Arr::lastKey([1, 2, 3]));
+        self::assertInternalType('int', Arr::lastKey(['a', 'b', 'c']));
+
+        // Test on assoc array.
+
+        self::assertEquals(3, Arr::lastKey([1 => null, 2 => null, 3 => null]));
+        self::assertEquals('c', Arr::lastKey(['a' => null, 'b' => null, 'c' => null]));
+        self::assertNotEquals('b', Arr::lastKey(['a' => null, 'b' => null, 'c' => null]));
+
+        self::assertEquals(2, Arr::lastKey([1 => null, 2 => null, 3 => null], function ($value, $key) {
+            return $value === null && $key === 2;
+        }));
+        self::assertEquals(null, Arr::lastKey([1 => null, 2 => null, 3 => null], function ($value) {
+            return $value !== null;
+        }));
+
+        self::assertInternalType('int', Arr::lastKey([1 => null, 2 => null, 3 => null]));
+        self::assertInternalType('string', Arr::lastKey(['a' => null, 'b' => null, 'c' => null]));
     }
 
     /**
