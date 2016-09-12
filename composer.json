@@ -26,9 +26,7 @@
   "require-dev": {
     "codeclimate/php-test-reporter": "dev-master",
     "phpmd/phpmd": "@stable",
-    "phpunit/phpcov": "2.*",
     "phpunit/phpunit": "4.8.*",
-    "satooshi/php-coveralls": "*",
     "squizlabs/php_codesniffer": "2.*"
   },
   "scripts": {
