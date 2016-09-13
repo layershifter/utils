@@ -173,10 +173,17 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     public function testWhere()
     {
         $array = [100, '200', 300, '400', 500];
-        $array = Arr::where($array, function ($value, $key) {
+        $array = Arr::where($array, function ($value) {
             return is_string($value);
         });
 
-        self::assertEquals([1 => 200, 3 => 400], $array);
+        self::assertEquals([1 => '200', 3 => '400'], $array);
+
+        $array = [100, '200', 300, '400', 500];
+        $array = Arr::where($array, function ($value) {
+            return is_int($value);
+        });
+
+        self::assertEquals([0 => 100, 2 => 300, 4 => 500], $array);
     }
 }
