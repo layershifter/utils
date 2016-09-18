@@ -25,6 +25,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function testFirst()
     {
+        self::assertEquals(null, Arr::first([]));
         self::assertEquals(1, Arr::first([1, 2, 3]));
         self::assertEquals('a', Arr::first(['a', 'b', 'c']));
         self::assertNotEquals('b', Arr::first(['a', 'b', 'c']));
@@ -47,6 +48,8 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function testFirstKey()
     {
+        self::assertEquals(null, Arr::firstKey([]));
+
         // Test on basic array.
 
         self::assertEquals(0, Arr::firstKey([1, 2, 3]));
