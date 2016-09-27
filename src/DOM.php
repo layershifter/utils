@@ -63,4 +63,38 @@ class DOM
     {
         return $node->nodeType === XML_TEXT_NODE;
     }
+
+    /**
+     * Normalizes given XPath.
+     *
+     * @param string $path String that contains XPath
+     *
+     * @return string
+     */
+    public static function normalizeXPath($path)
+    {
+        // If XPath is document root, it doesn't need to be modified.
+
+        if($path === '/') {
+            return $path;
+        }
+
+        // Splitting XPath to path parts, e.g. /body/html => ['body', 'html']
+
+        $parts = explode('/', substr($path, 1));
+
+        foreach ($parts as &$part) {
+            $length = strlen($part);
+
+            if ($part[$length - 1] === ']') {
+                continue;
+            }
+
+            $part .= '[1]';
+        }
+
+        // Converts parts back to string.
+
+        return '/' . implode('/', $parts);
+    }
 }
