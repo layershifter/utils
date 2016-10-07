@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************************************************
- *  Utils: A collection of useful PHP functions, mini classes and snippets that you need or could use every day.      *
+ * Utils: A collection of useful PHP functions, mini classes and snippets that you need or could use every day.       *
  *                                                                                                                    *
- * @link      https://github.com/layershifter/utils                                                                  *
+ * @link      https://github.com/layershifter/utils                                                                   *
  *                                                                                                                    *
- * @copyright Copyright (c) 2016, Alexander Fedyashov                                                                *
- * @license   https://raw.githubusercontent.com/layershifter/utils/master/LICENSE Apache 2.0 License                 *
+ * @copyright Copyright (c) 2016, Alexander Fedyashov                                                                 *
+ * @license   https://raw.githubusercontent.com/layershifter/utils/master/LICENSE Apache 2.0 License                  *
  **********************************************************************************************************************/
 
 namespace LayerShifter\Utils;
@@ -22,6 +22,20 @@ class Str
      * @const string Encoding for strings.
      */
     const ENCODING = 'UTF-8';
+
+//    TODO: New str functions
+//
+//    public function append() {
+//
+//    }
+//
+//    public function at() {
+//
+//    }
+//
+//    public function contains() {
+//
+//    }
 
     /**
      * Returns the portion of string specified by the start and length parameters.
@@ -82,6 +96,20 @@ class Str
         return mb_strpos($haystack, $needle, $offset, Str::ENCODING);
     }
 
+//    TODO: New str functions
+//
+//    public function replace() {
+//
+//    }
+//
+//    public function split() {
+//
+//    }
+//
+//    public function substr() {
+//
+//    }
+
     /**
      * Determines if a given string starts with a given substring.
      *
@@ -108,7 +136,7 @@ class Str
      *
      * @return string
      */
-    public static function toLover($value)
+    public static function toLower($value)
     {
         return mb_strtolower($value, Str::ENCODING);
     }

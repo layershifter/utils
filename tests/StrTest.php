@@ -1,11 +1,11 @@
 <?php
 /**********************************************************************************************************************
- *  Utils: A collection of useful PHP functions, mini classes and snippets that you need or could use every day.      *
+ * Utils: A collection of useful PHP functions, mini classes and snippets that you need or could use every day.       *
  *                                                                                                                    *
- *  @link      https://github.com/layershifter/utils                                                                  *
+ * @link      https://github.com/layershifter/utils                                                                   *
  *                                                                                                                    *
- *  @copyright Copyright (c) 2016, Alexander Fedyashov                                                                *
- *  @license   https://raw.githubusercontent.com/layershifter/utils/master/LICENSE Apache 2.0 License                 *
+ * @copyright Copyright (c) 2016, Alexander Fedyashov                                                                 *
+ * @license   https://raw.githubusercontent.com/layershifter/utils/master/LICENSE Apache 2.0 License                  *
  **********************************************************************************************************************/
 
 namespace LayerShifter\Utils\Tests;
@@ -102,8 +102,8 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function testToLower()
     {
-        self::assertEquals('foo bar baz', Str::toLover('FOO BAR BAZ'));
-        self::assertEquals('foo bar baz', Str::toLover('fOo Bar bAz'));
+        self::assertEquals('foo bar baz', Str::toLower('FOO BAR BAZ'));
+        self::assertEquals('foo bar baz', Str::toLower('fOo Bar bAz'));
     }
 
     /**
