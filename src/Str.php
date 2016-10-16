@@ -33,9 +33,25 @@ class Str
 //
 //    }
 //
-//    public function contains() {
-//
-//    }
+
+    /**
+     * Checks if a given string contains with a given substring.
+     *
+     * @param string       $haystack
+     * @param string|array $needles
+     *
+     * @return bool
+     */
+    public static function contains($haystack, $needles)
+    {
+        foreach ((array)$needles as $needle) {
+            if (false !== Str::pos($haystack, $needle)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     /**
      * Returns the portion of string specified by the start and length parameters.

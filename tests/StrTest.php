@@ -19,6 +19,24 @@ class StrTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
+     * Test for contains() method.
+     *
+     * @return void
+     */
+    public function testContains()
+    {
+        $this->assertTrue(Str::contains('БГДЖИЛЁ', 'ЖИ'));
+        $this->assertTrue(Str::contains('БГДЖИЛЁ', 'БГДЖИЛЁ'));
+        $this->assertTrue(Str::contains('БГДЖИЛЁ', ['ЖИ']));
+        $this->assertTrue(Str::contains('БГДЖИЛЁ', ['ЖИ', 'БГДЖИЛЁ']));
+
+        $this->assertFalse(Str::contains('БГДЖИЛЁ', 'АБ'));
+        $this->assertFalse(Str::contains('БГДЖИЛЁ', 'АБГДЖИЛЁ'));
+        $this->assertFalse(Str::contains('БГДЖИЛЁ', ['АБ']));
+        $this->assertFalse(Str::contains('БГДЖИЛЁ', ['АБ', 'АБГДЖИЛЁ']));
+    }
+
+    /**
      * Test for cut() method.
      *
      * @return void
@@ -29,12 +47,15 @@ class StrTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('ЛЁ', Str::cut('БГДЖИЛЁ', -2));
         $this->assertEquals('И', Str::cut('БГДЖИЛЁ', -3, 1));
         $this->assertEquals('ДЖИЛ', Str::cut('БГДЖИЛЁ', 2, -1));
+
         $this->assertEmpty(Str::cut('БГДЖИЛЁ', 4, -4));
+
         $this->assertEquals('ИЛ', Str::cut('БГДЖИЛЁ', -3, -1));
         $this->assertEquals('ГДЖИЛЁ', Str::cut('БГДЖИЛЁ', 1));
         $this->assertEquals('ГДЖ', Str::cut('БГДЖИЛЁ', 1, 3));
         $this->assertEquals('БГДЖ', Str::cut('БГДЖИЛЁ', 0, 4));
         $this->assertEquals('Ё', Str::cut('БГДЖИЛЁ', -1, 1));
+
         $this->assertEmpty(Str::cut('Б', 2));
     }
 
@@ -49,6 +70,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(Str::endsWith('jason', 'jason'));
         $this->assertTrue(Str::endsWith('jason', ['on']));
         $this->assertTrue(Str::endsWith('jason', ['no', 'on']));
+
         $this->assertFalse(Str::endsWith('jason', 'no'));
         $this->assertFalse(Str::endsWith('jason', ['no']));
         $this->assertFalse(Str::endsWith('jason', ''));
@@ -76,6 +98,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, Str::pos('БГДЖИЛЁ', 'Б'));
         $this->assertEquals(0, Str::pos('ЁБГДЖИЛЁ', 'Ё'));
         $this->assertEquals(2, Str::pos('БГДЖИЛЁД', 'Д'));
+
         $this->assertFalse(Str::pos('БГДЖИЛЁ', 'П'));
     }
 
@@ -90,6 +113,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(Str::startsWith('jason', 'jason'));
         $this->assertTrue(Str::startsWith('jason', ['jas']));
         $this->assertTrue(Str::startsWith('jason', ['day', 'jas']));
+
         $this->assertFalse(Str::startsWith('jason', 'day'));
         $this->assertFalse(Str::startsWith('jason', ['day']));
         $this->assertFalse(Str::startsWith('jason', ''));
@@ -117,6 +141,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0, Str::rPos('БГДЖИЛЁ', 'Б'));
         $this->assertEquals(7, Str::rPos('ЁБГДЖИЛЁ', 'Ё'));
         $this->assertEquals(7, Str::rPos('БГДЖИЛЁД', 'Д'));
+
         $this->assertFalse(Str::rPos('БГДЖИЛЁ', 'П'));
     }
 }
