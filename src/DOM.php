@@ -75,7 +75,7 @@ class DOM
     {
         // If XPath is document root, it doesn't need to be modified.
 
-        if($path === '/') {
+        if ($path === '/') {
             return $path;
         }
 
