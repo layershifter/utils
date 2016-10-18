@@ -147,6 +147,9 @@ class StrTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals('foo bar baz', Str::toLower('FOO BAR BAZ'));
         $this->assertEquals('foo bar baz', Str::toLower('fOo Bar bAz'));
+
+        $this->assertEquals('бгджилё', Str::toLower('БГДЖИЛЁ'));
+        $this->assertEquals('бгджилё', Str::toLower('БГджиЛЁ'));
     }
 
     /**
