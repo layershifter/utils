@@ -118,9 +118,25 @@ class Str
 //
 //    }
 //
-//    public function split() {
-//
-//    }
+
+    /**
+     * Splits the string with the provided delimiter.
+     *
+     * @param string   $haystack
+     * @param string   $delimiter
+     * @param null|int $limit
+     *
+     * @return array
+     */
+    public static function split($haystack, $delimiter, $limit = null)
+    {
+        if ($limit === 0) {
+            return [];
+        }
+
+        return explode($delimiter, $haystack, $limit);
+    }
+
 //
 //    public function substr() {
 //

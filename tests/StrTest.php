@@ -120,6 +120,24 @@ class StrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test for split() method.
+     *
+     * @return void
+     */
+    public function split()
+    {
+        $this->assertEquals(['БГД', 'ИЛЁ'], Str::split('БГДЖИЛЁ', 'Ж'));
+        $this->assertEquals(['ГДЖИЛЁ'], Str::split('БГДЖИЛЁ', 'Б'));
+        $this->assertEquals(['БГДЖИЛ'], Str::split('БГДЖИЛЁ', 'Ё'));
+        $this->assertEquals(['БГД', 'ЖИЛ'], Str::split('БГДЁЖИЛЁ', 'Ё'));
+
+        $this->assertEquals([], Str::split('БГДЖИЛЁ', 'Ж', 0));
+        $this->assertEquals(['ГДЖИЛЁ'], Str::split('БГДЖИЛЁ', 'Б', 1));
+        $this->assertEquals(['БГД'], Str::split('БГДЁЖИЛЁ', 'Ё', 1));
+        $this->assertEquals(['ЖИЛ'], Str::split('БГДЁЖИЛЁ', 'Ё', -1));
+    }
+
+    /**
      * Test for toLower() method.
      *
      * @return void
