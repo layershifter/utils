@@ -66,15 +66,15 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function testEndsWith()
     {
-        $this->assertTrue(Str::endsWith('jason', 'on'));
-        $this->assertTrue(Str::endsWith('jason', 'jason'));
-        $this->assertTrue(Str::endsWith('jason', ['on']));
-        $this->assertTrue(Str::endsWith('jason', ['no', 'on']));
+        $this->assertTrue(Str::endsWith('БГДЖИЛЁ', 'ЛЁ'));
+        $this->assertTrue(Str::endsWith('БГДЖИЛЁ', 'БГДЖИЛЁ'));
+        $this->assertTrue(Str::endsWith('БГДЖИЛЁ', ['ЛЁ']));
+        $this->assertTrue(Str::endsWith('БГДЖИЛЁ', ['ЁЛ', 'ЛЁ']));
 
-        $this->assertFalse(Str::endsWith('jason', 'no'));
-        $this->assertFalse(Str::endsWith('jason', ['no']));
-        $this->assertFalse(Str::endsWith('jason', ''));
-        $this->assertFalse(Str::endsWith('7', ' 7'));
+        $this->assertFalse(Str::endsWith('БГДЖИЛЁ', 'ЁЛ'));
+        $this->assertFalse(Str::endsWith('БГДЖИЛЁ', ['ЁЛ']));
+        $this->assertFalse(Str::endsWith('БГДЖИЛЁ', ''));
+        $this->assertFalse(Str::endsWith('БГДЖИЛЁ', ' ЛЁ'));
     }
 
     /**
@@ -85,6 +85,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
     public function testLength()
     {
         $this->assertEquals(11, Str::length('foo bar baz'));
+        $this->assertEquals(11, Str::length('AБB ГДЖ ИЛЁ'));
     }
 
     /**
@@ -109,14 +110,14 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function testStartsWith()
     {
-        $this->assertTrue(Str::startsWith('jason', 'jas'));
-        $this->assertTrue(Str::startsWith('jason', 'jason'));
-        $this->assertTrue(Str::startsWith('jason', ['jas']));
-        $this->assertTrue(Str::startsWith('jason', ['day', 'jas']));
+        $this->assertTrue(Str::startsWith('БГДЖИЛЁ', 'БГД'));
+        $this->assertTrue(Str::startsWith('БГДЖИЛЁ', 'БГДЖИЛЁ'));
+        $this->assertTrue(Str::startsWith('БГДЖИЛЁ', ['БГД']));
+        $this->assertTrue(Str::startsWith('БГДЖИЛЁ', ['ДЖИ', 'БГД']));
 
-        $this->assertFalse(Str::startsWith('jason', 'day'));
-        $this->assertFalse(Str::startsWith('jason', ['day']));
-        $this->assertFalse(Str::startsWith('jason', ''));
+        $this->assertFalse(Str::startsWith('БГДЖИЛЁ', 'ДЖИ'));
+        $this->assertFalse(Str::startsWith('БГДЖИЛЁ', ['ДЖИ']));
+        $this->assertFalse(Str::startsWith('БГДЖИЛЁ', ''));
     }
 
     /**
