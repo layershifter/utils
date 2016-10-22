@@ -19,6 +19,18 @@ class StrTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
+     * Test for append() method.
+     *
+     * @return void
+     */
+    public function testAppend()
+    {
+        $this->assertEquals('БГДЖИЛЁ', Str::append('БГД', 'ЖИЛЁ'));
+        $this->assertEquals('БГДЖИЛЁ', Str::append('БГД', ['ЖИ', 'ЛЁ']));
+        $this->assertEquals('БГДЖИЛЁ', Str::append('БГД', ['ЖИ', null, 'ЛЁ']));
+    }
+
+    /**
      * Test for contains() method.
      *
      * @return void
@@ -101,6 +113,18 @@ class StrTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, Str::pos('БГДЖИЛЁД', 'Д'));
 
         $this->assertFalse(Str::pos('БГДЖИЛЁ', 'П'));
+    }
+
+    /**
+     * Test for prepend() method.
+     *
+     * @return void
+     */
+    public function testPrepend()
+    {
+        $this->assertEquals('БГДЖИЛЁ', Str::prepend('ИЛЁ', 'БГДЖ'));
+        $this->assertEquals('БГДЖИЛЁ', Str::prepend('ИЛЁ', ['БГ', 'ДЖ']));
+        $this->assertEquals('БГДЖИЛЁ', Str::prepend('ИЛЁ', ['БГ', null, 'ДЖ']));
     }
 
     /**

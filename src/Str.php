@@ -23,12 +23,23 @@ class Str
      */
     const ENCODING = 'UTF-8';
 
-//    TODO: New str functions
-//
-//    public function append() {
-//
-//    }
-//
+    /**
+     * Appends a given string with a given substring.
+     *
+     * @param string       $haystack
+     * @param string|array $values
+     *
+     * @return string
+     */
+    public static function append($haystack, $values)
+    {
+        foreach ((array)$values as $value) {
+            $haystack .= $value;
+        }
+
+        return $haystack;
+    }
+
 //    public function at() {
 //
 //    }
@@ -110,6 +121,25 @@ class Str
     public static function pos($haystack, $needle, $offset = 0)
     {
         return mb_strpos($haystack, $needle, $offset, Str::ENCODING);
+    }
+
+    /**
+     * Prepends a given string with a given substring.
+     *
+     * @param string       $haystack
+     * @param string|array $values
+     *
+     * @return string
+     */
+    public static function prepend($haystack, $values)
+    {
+        $prefix = '';
+
+        foreach ((array)$values as $value) {
+            $prefix .= $value;
+        }
+
+        return $prefix . $haystack;
     }
 
 //    TODO: New str functions
