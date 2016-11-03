@@ -31,6 +31,18 @@ class StrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test for at() method.
+     *
+     * @return void
+     */
+    public function testAt()
+    {
+        $this->assertEquals('Б', Str::at('БГДЖИЛЁ', 0));
+        $this->assertEquals('Д', Str::at('БГДЖИЛЁ', 2));
+        $this->assertEquals('Ё', Str::at('БГДЖИЛЁ', 6));
+    }
+
+    /**
      * Test for contains() method.
      *
      * @return void
@@ -160,6 +172,24 @@ class StrTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(['ГДЖИЛЁ'], Str::split('БГДЖИЛЁ', 'Б', 1));
         $this->assertEquals(['БГД'], Str::split('БГДЁЖИЛЁ', 'Ё', 1));
         $this->assertEquals(['ЖИЛ'], Str::split('БГДЁЖИЛЁ', 'Ё', -1));
+    }
+
+    /**
+     * Test for substr() method.
+     *
+     * @return void
+     */
+    public function testSubstr()
+    {
+        $this->assertEquals('БГДЖИЛЁ', Str::substr('БГДЖИЛЁ', 0));
+        $this->assertEquals('ГДЖИЛЁ', Str::substr('БГДЖИЛЁ', 1));
+        $this->assertEquals('Ё', Str::substr('БГДЖИЛЁ', 6));
+        $this->assertEquals('', Str::substr('БГДЖИЛЁ', 10));
+
+        $this->assertEquals('', Str::substr('БГДЖИЛЁ', 0, 0));
+        $this->assertEquals('БГДЖИЛ', Str::substr('БГДЖИЛЁ', 0, -1));
+        $this->assertEquals('Б', Str::substr('БГДЖИЛЁ', 0, -6));
+        $this->assertEquals('', Str::substr('БГДЖИЛЁ', 0, -10));
     }
 
     /**

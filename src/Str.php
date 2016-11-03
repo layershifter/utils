@@ -40,10 +40,18 @@ class Str
         return $haystack;
     }
 
-//    public function at() {
-//
-//    }
-//
+    /**
+     * Returns the character at given index in a given string.
+     *
+     * @param string $haystack
+     * @param int    $index
+     *
+     * @return string
+     */
+    public static function at($haystack, $index)
+    {
+        return Str::substr($haystack, $index, 1);
+    }
 
     /**
      * Checks if a given string contains with a given substring.
@@ -167,10 +175,19 @@ class Str
         return explode($delimiter, $haystack, $limit);
     }
 
-//
-//    public function substr() {
-//
-//    }
+    /**
+     * Returns the substring beginning at given position with a given length.
+     *
+     * @param string $haystack
+     * @param int    $start
+     * @param int    $length
+     *
+     * @return string
+     */
+    public static function substr($haystack, $start, $length = null)
+    {
+        return mb_substr($haystack, $start, $length, Str::ENCODING);
+    }
 
     /**
      * Determines if a given string starts with a given substring.
