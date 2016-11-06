@@ -221,6 +221,23 @@ class Str
     }
 
     /**
+     * Returns a repeated string given a multiplier.
+     *
+     * @param string $haystack
+     * @param int    $multiplier
+     *
+     * @return string
+     */
+    public static function repeat($haystack, $multiplier)
+    {
+        if ($multiplier < 0) {
+            return '';
+        }
+
+        return str_repeat($haystack, $multiplier);
+    }
+
+    /**
      * Finds position of last occurrence of a string in a string.
      *
      * @param string $haystack

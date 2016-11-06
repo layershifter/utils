@@ -207,6 +207,20 @@ class StrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test for repeat() method.
+     *
+     * @return void
+     */
+    public function testRepeat()
+    {
+        $this->assertEquals('БГД', Str::repeat('БГД', 1));
+        $this->assertEquals('БГДБГД', Str::repeat('БГД', 2));
+
+        $this->assertEquals('', Str::repeat('БГД', 0));
+        $this->assertEquals('', Str::repeat('БГД', -1));
+    }
+
+    /**
      * Test for rPos() method.
      *
      * @return void
