@@ -106,6 +106,18 @@ class Str
     }
 
     /**
+     * Splits a given string on newlines and carriage returns to an array.
+     *
+     * @param string $haystack
+     *
+     * @return string[]
+     */
+    public static function lines($haystack)
+    {
+        return mb_split('[\r\n]{1,2}', $haystack);
+    }
+
+    /**
      * Returns the length of the given string.
      *
      * @param string $value

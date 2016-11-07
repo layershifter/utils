@@ -102,6 +102,25 @@ class StrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test for lines() method.
+     *
+     * @return void
+     */
+    public function testLines()
+    {
+        $this->assertEquals(['БГДЖИЛЁ'], Str::lines('БГДЖИЛЁ'));
+        $this->assertEquals(['БГД', 'ЖИЛЁ'], Str::lines("БГД\nЖИЛЁ"));
+        $this->assertEquals(['БГД', 'ЖИЛЁ'], Str::lines("БГД\rЖИЛЁ"));
+        $this->assertEquals(['БГД', 'ЖИЛЁ'], Str::lines("БГД\r\nЖИЛЁ"));
+        $this->assertEquals(['БГД', '', 'ЖИЛЁ'], Str::lines("БГД\r\n\r\nЖИЛЁ"));
+        $this->assertEquals(['БГД', 'ЖИЛЁ', ''], Str::lines("БГД\r\nЖИЛЁ\r\n"));
+        $this->assertEquals(['', 'БГД', 'ЖИЛЁ'], Str::lines("\r\nБГД\r\nЖИЛЁ"));
+
+        $this->assertEquals([''], Str::lines(''));
+        $this->assertEquals(['', ''], Str::lines("\r\n"));
+    }
+
+    /**
      * Test for length() method.
      *
      * @return void
