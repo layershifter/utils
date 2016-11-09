@@ -27,55 +27,55 @@ class IPTest extends \PHPUnit_Framework_TestCase
     {
         // IPv4 test cases.
 
-        self::assertTrue(IP::isValid('200.200.200.200'));
-        self::assertTrue(IP::isValid(' 200.200.200.200'));
-        self::assertTrue(IP::isValid('200.200.200.200 '));
-        self::assertTrue(IP::isValid('0.0.0.0'));
-        self::assertTrue(IP::isValid('255.255.255.255'));
+        $this->assertTrue(IP::isValid('200.200.200.200'));
+        $this->assertTrue(IP::isValid(' 200.200.200.200'));
+        $this->assertTrue(IP::isValid('200.200.200.200 '));
+        $this->assertTrue(IP::isValid('0.0.0.0'));
+        $this->assertTrue(IP::isValid('255.255.255.255'));
 
-        self::assertFalse(IP::isValid('00.00.00.00'));
-        self::assertFalse(IP::isValid('100.100.020.100'));
-        self::assertFalse(IP::isValid('-1.0.0.0'));
-        self::assertFalse(IP::isValid('200.200.256.200'));
-        self::assertFalse(IP::isValid('200.200.200.200.'));
-        self::assertFalse(IP::isValid('200.200.200'));
-        self::assertFalse(IP::isValid('200.200.200.2d0'));
-        self::assertFalse(IP::isValid('200000000000000000000000000000000000000000000000000000.200.200.200'));
+        $this->assertFalse(IP::isValid('00.00.00.00'));
+        $this->assertFalse(IP::isValid('100.100.020.100'));
+        $this->assertFalse(IP::isValid('-1.0.0.0'));
+        $this->assertFalse(IP::isValid('200.200.256.200'));
+        $this->assertFalse(IP::isValid('200.200.200.200.'));
+        $this->assertFalse(IP::isValid('200.200.200'));
+        $this->assertFalse(IP::isValid('200.200.200.2d0'));
+        $this->assertFalse(IP::isValid('200000000000000000000000000000000000000000000000000000.200.200.200'));
 
         // IPv6 test cases.
 
-        self::assertTrue(IP::isValid('00AB:0002:3008:8CFD:00AB:0002:3008:8CFD'));
-        self::assertTrue(IP::isValid('00ab:0002:3008:8cfd:00ab:0002:3008:8cfd'));
-        self::assertTrue(IP::isValid('00aB:0002:3008:8cFd:00Ab:0002:3008:8cfD'));
-        self::assertTrue(IP::isValid('AB:02:3008:8CFD:AB:02:3008:8CFD'));
-        self::assertTrue(IP::isValid('AB:02:3008:8CFD::02:3008:8CFD'));
-        self::assertTrue(IP::isValid('::'));
-        self::assertTrue(IP::isValid('0::'));
-        self::assertTrue(IP::isValid('0::0'));
+        $this->assertTrue(IP::isValid('00AB:0002:3008:8CFD:00AB:0002:3008:8CFD'));
+        $this->assertTrue(IP::isValid('00ab:0002:3008:8cfd:00ab:0002:3008:8cfd'));
+        $this->assertTrue(IP::isValid('00aB:0002:3008:8cFd:00Ab:0002:3008:8cfD'));
+        $this->assertTrue(IP::isValid('AB:02:3008:8CFD:AB:02:3008:8CFD'));
+        $this->assertTrue(IP::isValid('AB:02:3008:8CFD::02:3008:8CFD'));
+        $this->assertTrue(IP::isValid('::'));
+        $this->assertTrue(IP::isValid('0::'));
+        $this->assertTrue(IP::isValid('0::0'));
 
-        self::assertFalse(IP::isValid('00AB:00002:3008:8CFD:00AB:0002:3008:8CFD'));
-        self::assertFalse(IP::isValid(':0002:3008:8CFD:00AB:0002:3008:8CFD'));
-        self::assertFalse(IP::isValid('00AB:0002:3008:8CFD:00AB:0002:3008:'));
-        self::assertFalse(IP::isValid('AB:02:3008:8CFD:AB:02:3008:8CFD:02'));
-        self::assertFalse(IP::isValid('AB:02:3008:8CFD::02:3008:8CFD:02'));
-        self::assertFalse(IP::isValid('AB:02:3008:8CFD::02::8CFD'));
-        self::assertFalse(IP::isValid('GB:02:3008:8CFD:AB:02:3008:8CFD'));
-        self::assertFalse(IP::isValid('00000000000005.10.10.10'));
-        self::assertFalse(IP::isValid('2:::3'));
+        $this->assertFalse(IP::isValid('00AB:00002:3008:8CFD:00AB:0002:3008:8CFD'));
+        $this->assertFalse(IP::isValid(':0002:3008:8CFD:00AB:0002:3008:8CFD'));
+        $this->assertFalse(IP::isValid('00AB:0002:3008:8CFD:00AB:0002:3008:'));
+        $this->assertFalse(IP::isValid('AB:02:3008:8CFD:AB:02:3008:8CFD:02'));
+        $this->assertFalse(IP::isValid('AB:02:3008:8CFD::02:3008:8CFD:02'));
+        $this->assertFalse(IP::isValid('AB:02:3008:8CFD::02::8CFD'));
+        $this->assertFalse(IP::isValid('GB:02:3008:8CFD:AB:02:3008:8CFD'));
+        $this->assertFalse(IP::isValid('00000000000005.10.10.10'));
+        $this->assertFalse(IP::isValid('2:::3'));
 
-        self::assertTrue(IP::isValid('[AB:02:3008:8CFD::02:3008:8CFD]'));
-        self::assertTrue(IP::isValid('[::]'));
-        self::assertTrue(IP::isValid('[::1]'));
+        $this->assertTrue(IP::isValid('[AB:02:3008:8CFD::02:3008:8CFD]'));
+        $this->assertTrue(IP::isValid('[::]'));
+        $this->assertTrue(IP::isValid('[::1]'));
 
-        self::assertFalse(IP::isValid('[AB:02:3008:8CFD::02:3008:8CFD'));
-        self::assertFalse(IP::isValid('::]'));
-        self::assertFalse(IP::isValid('/[::1]'));
+        $this->assertFalse(IP::isValid('[AB:02:3008:8CFD::02:3008:8CFD'));
+        $this->assertFalse(IP::isValid('::]'));
+        $this->assertFalse(IP::isValid('/[::1]'));
 
         // Domain test cases.
 
-        self::assertFalse(IP::isValid('google.com'));
-        self::assertFalse(IP::isValid('.google.com'));
-        self::assertFalse(IP::isValid('www.google.com'));
-        self::assertFalse(IP::isValid('com'));
+        $this->assertFalse(IP::isValid('google.com'));
+        $this->assertFalse(IP::isValid('.google.com'));
+        $this->assertFalse(IP::isValid('www.google.com'));
+        $this->assertFalse(IP::isValid('com'));
     }
 }

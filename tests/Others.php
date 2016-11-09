@@ -25,13 +25,13 @@ class OthersTest extends \PHPUnit_Framework_TestCase
      */
     public function testValue()
     {
-        self::assertEquals(1, Others::value(1));
-        self::assertInternalType('int', Others::value(1));
+        $this->assertEquals(1, Others::value(1));
+        $this->assertInternalType('int', Others::value(1));
 
-        self::assertEquals(2, Others::value(function () {
+        $this->assertEquals(2, Others::value(function () {
             return 2;
         }));
-        self::assertInternalType('int', Others::value(function () {
+        $this->assertInternalType('int', Others::value(function () {
             return 2;
         }));
     }

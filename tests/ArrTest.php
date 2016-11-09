@@ -25,20 +25,20 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function testFirst()
     {
-        self::assertEquals(null, Arr::first([]));
-        self::assertEquals(1, Arr::first([1, 2, 3]));
-        self::assertEquals('a', Arr::first(['a', 'b', 'c']));
-        self::assertNotEquals('b', Arr::first(['a', 'b', 'c']));
+        $this->assertEquals(null, Arr::first([]));
+        $this->assertEquals(1, Arr::first([1, 2, 3]));
+        $this->assertEquals('a', Arr::first(['a', 'b', 'c']));
+        $this->assertNotEquals('b', Arr::first(['a', 'b', 'c']));
 
-        self::assertEquals(2, Arr::first([1, 2, 3], function ($value) {
+        $this->assertEquals(2, Arr::first([1, 2, 3], function ($value) {
             return $value === 2;
         }));
-        self::assertEquals(null, Arr::first([1, 2, 3], function ($value) {
+        $this->assertEquals(null, Arr::first([1, 2, 3], function ($value) {
             return $value === 20;
         }));
 
-        self::assertInternalType('int', Arr::first([1, 2, 3]));
-        self::assertInternalType('string', Arr::first(['a', 'b', 'c']));
+        $this->assertInternalType('int', Arr::first([1, 2, 3]));
+        $this->assertInternalType('string', Arr::first(['a', 'b', 'c']));
     }
 
     /**
@@ -48,39 +48,39 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function testFirstKey()
     {
-        self::assertEquals(null, Arr::firstKey([]));
+        $this->assertEquals(null, Arr::firstKey([]));
 
         // Test on basic array.
 
-        self::assertEquals(0, Arr::firstKey([1, 2, 3]));
-        self::assertEquals(0, Arr::firstKey(['a', 'b', 'c']));
-        self::assertNotEquals(1, Arr::firstKey(['a', 'b', 'c']));
+        $this->assertEquals(0, Arr::firstKey([1, 2, 3]));
+        $this->assertEquals(0, Arr::firstKey(['a', 'b', 'c']));
+        $this->assertNotEquals(1, Arr::firstKey(['a', 'b', 'c']));
 
-        self::assertEquals(1, Arr::firstKey([1, 2, 3], function ($value) {
+        $this->assertEquals(1, Arr::firstKey([1, 2, 3], function ($value) {
             return $value === 2;
         }));
-        self::assertEquals(null, Arr::firstKey([1, 2, 3], function ($value) {
+        $this->assertEquals(null, Arr::firstKey([1, 2, 3], function ($value) {
             return $value === 20;
         }));
 
-        self::assertInternalType('int', Arr::firstKey([1, 2, 3]));
-        self::assertInternalType('int', Arr::firstKey(['a', 'b', 'c']));
+        $this->assertInternalType('int', Arr::firstKey([1, 2, 3]));
+        $this->assertInternalType('int', Arr::firstKey(['a', 'b', 'c']));
 
         // Test on assoc array.
 
-        self::assertEquals(1, Arr::firstKey([1 => null, 2 => null, 3 => null]));
-        self::assertEquals('a', Arr::firstKey(['a' => null, 'b' => null, 'c' => null]));
-        self::assertNotEquals('b', Arr::firstKey(['a' => null, 'b' => null, 'c' => null]));
+        $this->assertEquals(1, Arr::firstKey([1 => null, 2 => null, 3 => null]));
+        $this->assertEquals('a', Arr::firstKey(['a' => null, 'b' => null, 'c' => null]));
+        $this->assertNotEquals('b', Arr::firstKey(['a' => null, 'b' => null, 'c' => null]));
 
-        self::assertEquals(2, Arr::firstKey([1 => null, 2 => null, 3 => null], function ($value, $key) {
+        $this->assertEquals(2, Arr::firstKey([1 => null, 2 => null, 3 => null], function ($value, $key) {
             return $value === null && $key === 2;
         }));
-        self::assertEquals(null, Arr::firstKey([1 => null, 2 => null, 3 => null], function ($value) {
+        $this->assertEquals(null, Arr::firstKey([1 => null, 2 => null, 3 => null], function ($value) {
             return $value !== null;
         }));
 
-        self::assertInternalType('int', Arr::firstKey([1 => null, 2 => null, 3 => null]));
-        self::assertInternalType('string', Arr::firstKey(['a' => null, 'b' => null, 'c' => null]));
+        $this->assertInternalType('int', Arr::firstKey([1 => null, 2 => null, 3 => null]));
+        $this->assertInternalType('string', Arr::firstKey(['a' => null, 'b' => null, 'c' => null]));
     }
 
     /**
@@ -90,19 +90,19 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function testLast()
     {
-        self::assertEquals(3, Arr::last([1, 2, 3]));
-        self::assertEquals('c', Arr::last(['a', 'b', 'c']));
-        self::assertNotEquals('b', Arr::last(['a', 'b', 'c']));
+        $this->assertEquals(3, Arr::last([1, 2, 3]));
+        $this->assertEquals('c', Arr::last(['a', 'b', 'c']));
+        $this->assertNotEquals('b', Arr::last(['a', 'b', 'c']));
 
-        self::assertEquals(2, Arr::last([1, 2, 3], function ($value) {
+        $this->assertEquals(2, Arr::last([1, 2, 3], function ($value) {
             return $value === 2;
         }));
-        self::assertEquals(null, Arr::last([1, 2, 3], function ($value) {
+        $this->assertEquals(null, Arr::last([1, 2, 3], function ($value) {
             return $value === 20;
         }));
 
-        self::assertInternalType('int', Arr::last([1, 2, 3]));
-        self::assertInternalType('string', Arr::last(['a', 'b', 'c']));
+        $this->assertInternalType('int', Arr::last([1, 2, 3]));
+        $this->assertInternalType('string', Arr::last(['a', 'b', 'c']));
     }
 
     /**
@@ -114,35 +114,35 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     {
         // Test on basic array.
 
-        self::assertEquals(2, Arr::lastKey([1, 2, 3]));
-        self::assertEquals(2, Arr::lastKey(['a', 'b', 'c']));
-        self::assertNotEquals(1, Arr::lastKey(['a', 'b', 'c']));
+        $this->assertEquals(2, Arr::lastKey([1, 2, 3]));
+        $this->assertEquals(2, Arr::lastKey(['a', 'b', 'c']));
+        $this->assertNotEquals(1, Arr::lastKey(['a', 'b', 'c']));
 
-        self::assertEquals(1, Arr::lastKey([1, 2, 3], function ($value) {
+        $this->assertEquals(1, Arr::lastKey([1, 2, 3], function ($value) {
             return $value === 2;
         }));
-        self::assertEquals(null, Arr::lastKey([1, 2, 3], function ($value) {
+        $this->assertEquals(null, Arr::lastKey([1, 2, 3], function ($value) {
             return $value === 20;
         }));
 
-        self::assertInternalType('int', Arr::lastKey([1, 2, 3]));
-        self::assertInternalType('int', Arr::lastKey(['a', 'b', 'c']));
+        $this->assertInternalType('int', Arr::lastKey([1, 2, 3]));
+        $this->assertInternalType('int', Arr::lastKey(['a', 'b', 'c']));
 
         // Test on assoc array.
 
-        self::assertEquals(3, Arr::lastKey([1 => null, 2 => null, 3 => null]));
-        self::assertEquals('c', Arr::lastKey(['a' => null, 'b' => null, 'c' => null]));
-        self::assertNotEquals('b', Arr::lastKey(['a' => null, 'b' => null, 'c' => null]));
+        $this->assertEquals(3, Arr::lastKey([1 => null, 2 => null, 3 => null]));
+        $this->assertEquals('c', Arr::lastKey(['a' => null, 'b' => null, 'c' => null]));
+        $this->assertNotEquals('b', Arr::lastKey(['a' => null, 'b' => null, 'c' => null]));
 
-        self::assertEquals(2, Arr::lastKey([1 => null, 2 => null, 3 => null], function ($value, $key) {
+        $this->assertEquals(2, Arr::lastKey([1 => null, 2 => null, 3 => null], function ($value, $key) {
             return $value === null && $key === 2;
         }));
-        self::assertEquals(null, Arr::lastKey([1 => null, 2 => null, 3 => null], function ($value) {
+        $this->assertEquals(null, Arr::lastKey([1 => null, 2 => null, 3 => null], function ($value) {
             return $value !== null;
         }));
 
-        self::assertInternalType('int', Arr::lastKey([1 => null, 2 => null, 3 => null]));
-        self::assertInternalType('string', Arr::lastKey(['a' => null, 'b' => null, 'c' => null]));
+        $this->assertInternalType('int', Arr::lastKey([1 => null, 2 => null, 3 => null]));
+        $this->assertInternalType('string', Arr::lastKey(['a' => null, 'b' => null, 'c' => null]));
     }
 
     /**
@@ -164,7 +164,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
             return $value['name'];
         }));
 
-        self::assertEquals($expected, $sorted);
+        $this->assertEquals($expected, $sorted);
     }
 
 
@@ -180,13 +180,13 @@ class ArrTest extends \PHPUnit_Framework_TestCase
             return is_string($value);
         });
 
-        self::assertEquals([1 => '200', 3 => '400'], $array);
+        $this->assertEquals([1 => '200', 3 => '400'], $array);
 
         $array = [100, '200', 300, '400', 500];
         $array = Arr::where($array, function ($value) {
             return is_int($value);
         });
 
-        self::assertEquals([0 => 100, 2 => 300, 4 => 500], $array);
+        $this->assertEquals([0 => 100, 2 => 300, 4 => 500], $array);
     }
 }
