@@ -85,6 +85,29 @@ class Arr
     }
 
     /**
+     * Flatten a multi-dimensional array into a single level.
+     *
+     * @param array $array
+     * @param int   $depth
+     *
+     * @return array
+     */
+    public static function flatten(array $array, $depth = INF)
+    {
+        return array_reduce($array, function ($result, $item) use ($depth) {
+            if (!is_array($item)) {
+                return array_merge($result, [$item]);
+            }
+
+            if ($depth === 1) {
+                return array_merge($result, array_values($item));
+            }
+
+            return array_merge($result, Arr::flatten($item, $depth - 1));
+        }, []);
+    }
+
+    /**
      * Returns the last element in an array passing a given truth test.
      *
      * @param array         $array    Haystack array

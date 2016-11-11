@@ -84,6 +84,60 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test for flatten() method with depth parameter.
+     *
+     * @return void
+     */
+    public function testFlatten()
+    {
+        // Flat arrays are unaffected.
+
+        $array = ['#foo', '#bar', '#baz'];
+        $this->assertEquals($array, Arr::flatten($array));
+
+        // Nested arrays are flattened with existing flat items.
+
+        $array = [['#foo', '#bar'], '#baz'];
+        $this->assertEquals(['#foo', '#bar', '#baz'], Arr::flatten($array));
+
+        // Flattened array includes "null" items.
+
+        $array = [['#foo', null], '#baz', null];
+        $this->assertEquals(['#foo', null, '#baz', null], Arr::flatten($array));
+
+        // Sets of nested arrays are flattened.
+
+        $array = [['#foo', '#bar'], ['#baz']];
+        $this->assertEquals(['#foo', '#bar', '#baz'], Arr::flatten($array));
+
+        // Deeply nested arrays are flattened.
+
+        $array = [['#foo', ['#bar']], ['#baz']];
+        $this->assertEquals(['#foo', '#bar', '#baz'], Arr::flatten($array));
+    }
+
+    /**
+     * Test for flatten() method with depth parameter.
+     *
+     * @return void
+     */
+    public function testFlattenWithDepth()
+    {
+        // No depth flattens recursively.
+
+        $array = [['#foo', ['#bar', ['#baz']]], '#zap'];
+        $this->assertEquals(['#foo', '#bar', '#baz', '#zap'], Arr::flatten($array));
+
+        // Specifying a depth only flattens to that depth.
+
+        $array = [['#foo', ['#bar', ['#baz']]], '#zap'];
+        $this->assertEquals(['#foo', ['#bar', ['#baz']], '#zap'], Arr::flatten($array, 1));
+
+        $array = [['#foo', ['#bar', ['#baz']]], '#zap'];
+        $this->assertEquals(['#foo', '#bar', ['#baz'], '#zap'], Arr::flatten($array, 2));
+    }
+
+    /**
      * Test for last() method.
      *
      * @return void
